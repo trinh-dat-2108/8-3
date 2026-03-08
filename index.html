@@ -77,29 +77,52 @@
       animation: glowTitle 2.2s ease-in-out infinite;
     }
 
-    button {
+    #wishBtn {
       border: none;
       outline: none;
-      color: white;
-      font-size: 28px;
-      font-weight: 700;
-      padding: 18px 38px;
-      border-radius: 18px;
       cursor: pointer;
-      background: linear-gradient(135deg, #f06c8e, #df6f8d);
-      box-shadow: 0 0 0 rgba(240, 108, 142, 0.45);
-      animation: pulseButton 1.5s infinite;
-      transition: transform 0.25s ease, opacity 0.45s ease;
+      background: linear-gradient(135deg, #fff6f8, #ffe8ee);
+      border: 2px solid rgba(240, 108, 142, 0.18);
+      border-radius: 26px;
+      padding: 18px 28px 16px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 15px 30px rgba(240, 108, 142, 0.15);
+      transition: transform 0.25s ease, opacity 0.45s ease, box-shadow 0.25s ease;
+      animation: pulseGift 1.8s infinite;
     }
 
-    button:hover {
-      transform: scale(1.05);
+    #wishBtn:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 18px 38px rgba(240, 108, 142, 0.22);
     }
 
-    button.hide {
+    #wishBtn.hide {
       opacity: 0;
       transform: scale(0.75);
       pointer-events: none;
+    }
+
+    .bouquet-icon {
+      font-size: 78px;
+      line-height: 1;
+      display: block;
+      animation: bouquetBounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 6px 10px rgba(217, 79, 121, 0.15));
+    }
+
+    .wish-label {
+      font-size: 22px;
+      font-weight: 700;
+      color: #d94f79;
+      letter-spacing: 0.2px;
+    }
+
+    .wish-sub {
+      font-size: 14px;
+      color: #a9687c;
     }
 
     #msg {
@@ -152,18 +175,6 @@
       }
     }
 
-    @keyframes pulseButton {
-      0% {
-        box-shadow: 0 0 0 0 rgba(240, 108, 142, 0.5);
-      }
-      70% {
-        box-shadow: 0 0 0 22px rgba(240, 108, 142, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(240, 108, 142, 0);
-      }
-    }
-
     @keyframes flowerDance {
       0%, 100% {
         transform: translateY(0) rotate(0deg) scale(1);
@@ -188,6 +199,27 @@
       }
       50% {
         transform: translateY(-6px);
+      }
+    }
+
+    @keyframes bouquetBounce {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translateY(-8px) rotate(-4deg) scale(1.05);
+      }
+    }
+
+    @keyframes pulseGift {
+      0% {
+        box-shadow: 0 0 0 0 rgba(240, 108, 142, 0.22);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(240, 108, 142, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(240, 108, 142, 0);
       }
     }
 
@@ -226,10 +258,21 @@
         margin-bottom: 24px;
       }
 
-      button {
-        font-size: 20px;
-        padding: 14px 22px;
-        border-radius: 14px;
+      #wishBtn {
+        padding: 16px 22px 14px;
+        border-radius: 22px;
+      }
+
+      .bouquet-icon {
+        font-size: 64px;
+      }
+
+      .wish-label {
+        font-size: 18px;
+      }
+
+      .wish-sub {
+        font-size: 12px;
       }
 
       #msg {
@@ -258,7 +301,11 @@
     <div class="flower">🌸</div>
     <h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
 
-    <button id="wishBtn" type="button" onclick="showMessage()">Nhận lời chúc</button>
+    <button id="wishBtn" type="button" onclick="showMessage()">
+      <span class="bouquet-icon">💐</span>
+      <span class="wish-label">Nhận lời chúc</span>
+      <span class="wish-sub">Nhấn vào bó hoa</span>
+    </button>
 
     <div id="msg"></div>
   </div>
@@ -308,7 +355,7 @@
       const burst = document.createElement("div");
       burst.className = "burst";
 
-      const icons = ["💖", "✨", "🌸", "💫", "🌷"];
+      const icons = ["💖", "✨", "🌸", "💫", "🌷", "💐"];
       for (let i = 0; i < 18; i++) {
         const item = document.createElement("span");
         item.textContent = icons[Math.floor(Math.random() * icons.length)];
