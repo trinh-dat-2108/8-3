@@ -102,15 +102,15 @@
       font-size: 28px;
       line-height: 1.9;
       opacity: 0;
-      transform: translateY(40px);
-      filter: blur(6px);
+      transform: translateY(55px);
+      filter: blur(8px);
       max-height: 0;
       overflow: hidden;
       transition:
-        opacity 1.2s ease,
-        transform 1.2s ease,
-        filter 1.2s ease,
-        max-height 1.4s ease;
+        opacity 2.2s ease,
+        transform 2.2s ease,
+        filter 2.2s ease,
+        max-height 2.6s ease;
     }
 
     #msg.show {
@@ -118,7 +118,7 @@
       opacity: 1;
       transform: translateY(0);
       filter: blur(0);
-      max-height: 600px;
+      max-height: 700px;
     }
 
     .burst {
@@ -218,12 +218,13 @@
 
       #msg {
         font-size: 21px;
-        transform: translateY(50px);
+        transform: translateY(60px);
+        filter: blur(10px);
         transition:
-          opacity 1.8s ease,
-          transform 1.8s ease,
-          filter 1.8s ease,
-          max-height 2.1s ease;
+          opacity 2.8s ease,
+          transform 2.8s ease,
+          filter 2.8s ease,
+          max-height 3.2s ease;
       }
 
       #msg.show {
@@ -264,9 +265,11 @@
       const card = document.getElementById("card");
 
       msg.innerHTML = `
-       Chúc em có một ngày 8/3 thật vui vẻ, nhẹ nhàng và tràn đầy tiếng cười. Mong rằng mỗi ngày trôi qua đều mang đến cho em nhiều niềm vui, nhiều điều tích cực và những trải nghiệm đáng nhớ.
-
-Hy vọng em luôn gặp nhiều may mắn, thuận lợi trong học tập, công việc cũng như trong cuộc sống. Chúc cho mọi dự định và mục tiêu của em đều dần trở thành hiện thực, và em luôn giữ được tinh thần lạc quan để đón nhận những điều tốt đẹp phía trước. 🌷
+        Chúc bạn có một ngày 8/3 thật vui vẻ, nhẹ nhàng và tràn đầy tiếng cười.
+        Mong rằng mỗi ngày trôi qua đều mang đến cho bạn nhiều niềm vui, nhiều điều tích cực và những trải nghiệm đáng nhớ.
+        <br><br>
+        Hy vọng bạn luôn gặp nhiều may mắn, thuận lợi trong học tập, công việc cũng như trong cuộc sống.
+        Chúc cho mọi dự định và mục tiêu của bạn đều dần trở thành hiện thực, và bạn luôn giữ được tinh thần lạc quan để đón nhận những điều tốt đẹp phía trước. 🌷
       `;
 
       msg.classList.add("show");
