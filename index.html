@@ -13,98 +13,81 @@
     }
 
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background: #e6bfc6;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       padding: 20px;
     }
 
     .card {
       width: 100%;
-      max-width: 550px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 24px;
-      padding: 40px 30px;
+      max-width: 900px;
+      background: #f7f4f5;
+      border-radius: 30px;
+      padding: 60px 50px;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
     }
 
     .flower {
-      font-size: 42px;
-      margin-bottom: 12px;
+      font-size: 50px;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 32px;
-      color: #e8436f;
-      margin-bottom: 24px;
+      color: #d65277;
+      font-size: 64px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 35px;
     }
 
     button {
-      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      padding: 20px 40px;
+      font-size: 28px;
+      font-weight: bold;
       color: white;
+      background: linear-gradient(135deg, #ef6a86, #df7893);
       border: none;
-      padding: 14px 28px;
-      font-size: 17px;
-      font-weight: 600;
-      border-radius: 14px;
+      border-radius: 20px;
       cursor: pointer;
+      box-shadow: 0 10px 25px rgba(223, 120, 147, 0.35);
       transition: 0.3s;
-      box-shadow: 0 8px 18px rgba(255, 77, 109, 0.35);
     }
 
     button:hover {
       transform: translateY(-3px);
     }
 
-    #msg[hidden] {
-      display: none !important;
-    }
-
     #msg {
-      margin-top: 24px;
-      padding: 18px;
-      border-radius: 16px;
-      background: #fff0f3;
-      font-size: 18px;
-      font-weight: 500;
-      color: #d6336c;
-      line-height: 1.7;
-      animation: fadeIn 0.6s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      display: none;
+      font-size: 28px;
+      color: #444;
+      line-height: 1.8;
+      margin-top: 35px;
     }
   </style>
 </head>
-
 <body>
   <div class="card">
     <div class="flower">🌸</div>
-    <h1>Chúc mừng 8/3</h1>
+
+    <h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
 
     <button id="wishBtn" onclick="showMessage()">Nhận lời chúc</button>
 
-    <div id="msg" hidden>
-      🌷 Chúc bạn luôn xinh đẹp, hạnh phúc, mạnh mẽ và thành công.
-      Mong rằng mỗi ngày của bạn đều ngập tràn niềm vui, yêu thương và những điều tốt đẹp nhất. 💖
+    <div id="msg">
+      Chúc bạn luôn xinh đẹp, mạnh mẽ, hạnh phúc và thành công trên con đường mình chọn.
+      Cảm ơn bạn vì đã mang đến sự dịu dàng, ấm áp và những điều tốt đẹp cho cuộc sống này. 💖
     </div>
   </div>
 
   <script>
     function showMessage() {
-      document.getElementById("msg").hidden = false;
+      document.getElementById("msg").style.display = "block";
       document.getElementById("wishBtn").style.display = "none";
     }
   </script>
