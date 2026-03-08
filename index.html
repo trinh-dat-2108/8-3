@@ -39,7 +39,7 @@
 
     h1 {
       color: #d65277;
-      font-size: 64px;
+      font-size: 58px;
       font-weight: bold;
       line-height: 1.2;
       margin-bottom: 35px;
@@ -77,18 +77,19 @@
 
     <h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
 
-    <button id="wishBtn" onclick="showMessage()">Nhận lời chúc</button>
+    <button id="wishBtn" type="button" onclick="showMessage()">Nhận lời chúc</button>
 
-    <div id="msg">
-      Chúc bạn luôn xinh đẹp, mạnh mẽ, hạnh phúc và thành công trên con đường mình chọn.
-      Cảm ơn bạn vì đã mang đến sự dịu dàng, ấm áp và những điều tốt đẹp cho cuộc sống này. 💖
-    </div>
+    <div id="msg"></div>
   </div>
 
   <script>
     function showMessage() {
-      document.getElementById("msg").style.display = "block";
-      document.getElementById("wishBtn").style.display = "none";
+      const msg = document.getElementById("msg");
+      const btn = document.getElementById("wishBtn");
+
+      msg.textContent = "Chúc bạn luôn xinh đẹp, mạnh mẽ, hạnh phúc và thành công trên con đường mình chọn. Cảm ơn bạn vì đã mang đến sự dịu dàng, ấm áp và những điều tốt đẹp cho cuộc sống này. 💖";
+      msg.style.display = "block";
+      btn.style.display = "none";
     }
   </script>
 </body>
