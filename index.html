@@ -12,13 +12,19 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      width: 100%;
+      min-height: 100%;
+    }
+
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       background: linear-gradient(135deg, #f3c6d0, #efb8c5, #f8dce2);
       padding: 20px;
       position: relative;
@@ -52,6 +58,7 @@
       text-align: center;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
       animation: floatCard 3s ease-in-out infinite;
+      margin: 20px 0;
     }
 
     .flower {
@@ -118,7 +125,7 @@
       opacity: 1;
       transform: translateY(0);
       filter: blur(0);
-      max-height: 700px;
+      max-height: 1200px;
     }
 
     .burst {
@@ -196,9 +203,18 @@
     }
 
     @media (max-width: 768px) {
+      body {
+        display: block;
+        padding: 16px 12px 28px;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
       .card {
-        padding: 40px 24px;
+        margin: 16px auto 24px;
+        padding: 36px 20px;
         border-radius: 24px;
+        animation: none;
       }
 
       .flower {
@@ -206,13 +222,13 @@
       }
 
       h1 {
-        font-size: 36px;
-        margin-bottom: 28px;
+        font-size: 34px;
+        margin-bottom: 24px;
       }
 
       button {
-        font-size: 21px;
-        padding: 15px 24px;
+        font-size: 20px;
+        padding: 14px 22px;
         border-radius: 14px;
       }
 
@@ -220,6 +236,7 @@
         font-size: 21px;
         transform: translateY(60px);
         filter: blur(10px);
+        line-height: 1.85;
         transition:
           opacity 2.8s ease,
           transform 2.8s ease,
@@ -228,7 +245,8 @@
       }
 
       #msg.show {
-        margin-top: 28px;
+        margin-top: 26px;
+        max-height: 2000px;
       }
     }
   </style>
@@ -280,6 +298,10 @@
       }, 450);
 
       createBurst(card);
+
+      setTimeout(() => {
+        msg.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
     }
 
     function createBurst(card) {
