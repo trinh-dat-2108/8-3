@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chúc mừng 8/3</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    max-width:500px;
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    background:#ff4d6d;
+    color:white;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff1e4d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>🌸 Chúc mừng 8/3 🌸</h1>
+
+<p>
+Chúc bạn luôn xinh đẹp, hạnh phúc và thành công trong cuộc sống.  
+Cảm ơn vì đã mang đến nhiều điều tốt đẹp cho thế giới này.
+</p>
+
+<button onclick="showMessage()">Nhận lời chúc</button>
+
+<p id="msg"></p>
+</div>
+
+<script>
+function showMessage(){
+document.getElementById("msg").innerHTML =
+"Chúc bạn một ngày 8/3 thật vui vẻ và tràn đầy năng lượng! 🌷";
+}
+</script>
+
+</body>
+</html>
