@@ -7,9 +7,9 @@
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -19,9 +19,9 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #efc2cb, #e8b4c0, #f4d5db);
-      position: relative;
+      background: linear-gradient(135deg, #f3c6d0, #efb8c5, #f8dce2);
       padding: 20px;
+      position: relative;
     }
 
     .petals {
@@ -35,61 +35,63 @@
     .petal {
       position: absolute;
       top: -60px;
-      animation: fall linear infinite;
       opacity: 0.9;
       user-select: none;
+      animation: fall linear infinite;
     }
 
     .card {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 920px;
-      background: rgba(255, 255, 255, 0.86);
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
       border-radius: 32px;
-      padding: 60px 50px;
+      padding: 58px 48px;
       text-align: center;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
-      backdrop-filter: blur(8px);
-      animation: cardFloat 3s ease-in-out infinite;
+      animation: floatCard 3s ease-in-out infinite;
     }
 
     .flower {
-      font-size: 58px;
+      font-size: 56px;
       margin-bottom: 16px;
-      animation: flowerDance 2s ease-in-out infinite;
+      animation: flowerDance 2.4s ease-in-out infinite;
     }
 
     h1 {
       color: #d94f79;
-      font-size: 58px;
+      font-size: 56px;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 34px;
-      animation: titleGlow 2s ease-in-out infinite;
+      text-shadow: 0 0 12px rgba(217, 79, 121, 0.08);
+      animation: glowTitle 2.2s ease-in-out infinite;
     }
 
     button {
       border: none;
+      outline: none;
       color: white;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 700;
-      padding: 20px 42px;
+      padding: 18px 38px;
       border-radius: 18px;
       cursor: pointer;
       background: linear-gradient(135deg, #f06c8e, #df6f8d);
       box-shadow: 0 0 0 rgba(240, 108, 142, 0.45);
-      animation: pulseButton 1.4s infinite;
+      animation: pulseButton 1.5s infinite;
       transition: transform 0.25s ease, opacity 0.45s ease;
     }
 
     button:hover {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     button.hide {
       opacity: 0;
-      transform: scale(0.7);
+      transform: scale(0.75);
       pointer-events: none;
     }
 
@@ -97,21 +99,26 @@
       max-width: 760px;
       margin: 0 auto;
       color: #4a4547;
-      font-size: 0;
-      line-height: 1.8;
+      font-size: 28px;
+      line-height: 1.9;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
+      filter: blur(6px);
       max-height: 0;
       overflow: hidden;
-      transition: all 0.9s ease;
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease,
+        max-height 1.4s ease;
     }
 
     #msg.show {
       margin-top: 34px;
-      font-size: 28px;
       opacity: 1;
       transform: translateY(0);
-      max-height: 500px;
+      filter: blur(0);
+      max-height: 600px;
     }
 
     .burst {
@@ -159,16 +166,16 @@
       }
     }
 
-    @keyframes titleGlow {
+    @keyframes glowTitle {
       0%, 100% {
         text-shadow: 0 0 0 rgba(217, 79, 121, 0);
       }
       50% {
-        text-shadow: 0 0 18px rgba(217, 79, 121, 0.22);
+        text-shadow: 0 0 18px rgba(217, 79, 121, 0.2);
       }
     }
 
-    @keyframes cardFloat {
+    @keyframes floatCard {
       0%, 100% {
         transform: translateY(0);
       }
@@ -191,23 +198,36 @@
     @media (max-width: 768px) {
       .card {
         padding: 40px 24px;
-      }
-
-      h1 {
-        font-size: 38px;
-      }
-
-      button {
-        font-size: 22px;
-        padding: 16px 26px;
-      }
-
-      #msg.show {
-        font-size: 21px;
+        border-radius: 24px;
       }
 
       .flower {
         font-size: 42px;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 28px;
+      }
+
+      button {
+        font-size: 21px;
+        padding: 15px 24px;
+        border-radius: 14px;
+      }
+
+      #msg {
+        font-size: 21px;
+        transform: translateY(50px);
+        transition:
+          opacity 1.8s ease,
+          transform 1.8s ease,
+          filter 1.8s ease,
+          max-height 2.1s ease;
+      }
+
+      #msg.show {
+        margin-top: 28px;
       }
     }
   </style>
@@ -227,13 +247,13 @@
   <script>
     const petals = document.getElementById("petals");
 
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 24; i++) {
       const petal = document.createElement("div");
       petal.className = "petal";
       petal.textContent = Math.random() > 0.5 ? "🌸" : "💮";
       petal.style.left = Math.random() * 100 + "vw";
-      petal.style.fontSize = (20 + Math.random() * 18) + "px";
-      petal.style.animationDuration = (6 + Math.random() * 6) + "s";
+      petal.style.fontSize = (18 + Math.random() * 18) + "px";
+      petal.style.animationDuration = (7 + Math.random() * 6) + "s";
       petal.style.animationDelay = (Math.random() * 6) + "s";
       petals.appendChild(petal);
     }
@@ -243,10 +263,15 @@
       const btn = document.getElementById("wishBtn");
       const card = document.getElementById("card");
 
-      msg.innerHTML = "Chúc bạn luôn xinh đẹp, mạnh mẽ, hạnh phúc và thành công trên con đường mình chọn. Cảm ơn bạn vì đã mang đến sự dịu dàng, ấm áp và những điều tốt đẹp cho cuộc sống này. 💖";
-      msg.classList.add("show");
+      msg.innerHTML = `
+       Chúc em có một ngày 8/3 thật vui vẻ, nhẹ nhàng và tràn đầy tiếng cười. Mong rằng mỗi ngày trôi qua đều mang đến cho em nhiều niềm vui, nhiều điều tích cực và những trải nghiệm đáng nhớ.
 
+Hy vọng em luôn gặp nhiều may mắn, thuận lợi trong học tập, công việc cũng như trong cuộc sống. Chúc cho mọi dự định và mục tiêu của em đều dần trở thành hiện thực, và em luôn giữ được tinh thần lạc quan để đón nhận những điều tốt đẹp phía trước. 🌷
+      `;
+
+      msg.classList.add("show");
       btn.classList.add("hide");
+
       setTimeout(() => {
         btn.style.display = "none";
       }, 450);
@@ -258,7 +283,7 @@
       const burst = document.createElement("div");
       burst.className = "burst";
 
-      const icons = ["💖", "✨", "🌸", "💫", "💕"];
+      const icons = ["💖", "✨", "🌸", "💫", "🌷"];
       for (let i = 0; i < 18; i++) {
         const item = document.createElement("span");
         item.textContent = icons[Math.floor(Math.random() * icons.length)];
