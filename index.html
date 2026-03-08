@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chúc mừng 8/3</title>
 
   <style>
@@ -19,21 +19,18 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      overflow: hidden;
       padding: 20px;
     }
 
     .card {
       width: 100%;
       max-width: 560px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 24px;
       padding: 40px 32px;
       text-align: center;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
       animation: fadeInUp 1s ease;
-      position: relative;
     }
 
     .flower {
@@ -48,7 +45,7 @@
       margin-bottom: 16px;
     }
 
-    p {
+    .intro {
       font-size: 18px;
       line-height: 1.7;
       color: #444;
@@ -74,12 +71,20 @@
     }
 
     #msg {
-      margin-top: 22px;
+      display: none;
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #fff0f3;
       font-size: 18px;
       font-weight: 500;
       color: #d6336c;
-      min-height: 30px;
-      transition: 0.3s;
+      line-height: 1.6;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .hidden {
+      display: none;
     }
 
     @keyframes fadeInUp {
@@ -101,27 +106,41 @@
         transform: translateY(-8px);
       }
     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="card">
     <div class="flower">🌸</div>
-    <h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
+    <h1>Chúc mừng 8/3</h1>
 
-    <p>
-      Chúc bạn luôn xinh đẹp, mạnh mẽ, hạnh phúc và thành công trên con đường mình chọn.
-      Cảm ơn bạn vì đã mang đến sự dịu dàng, ấm áp và những điều tốt đẹp cho cuộc sống này.
+    <p class="intro">
+      Một món quà nhỏ dành riêng cho bạn trong ngày đặc biệt này.
     </p>
 
-    <button onclick="showMessage()">Nhận lời chúc</button>
-    <p id="msg"></p>
+    <button id="wishBtn" onclick="showMessage()">Nhận lời chúc</button>
+
+    <div id="msg">
+      🌷 Chúc bạn luôn xinh đẹp, hạnh phúc, mạnh mẽ và thành công.
+      Mong rằng mỗi ngày của bạn đều ngập tràn niềm vui, yêu thương và những điều tốt đẹp nhất. 💖
+    </div>
   </div>
 
   <script>
     function showMessage() {
-      const msg = document.getElementById("msg");
-      msg.innerHTML = "🌷 Chúc bạn một ngày 8/3 thật rạng rỡ, vui vẻ và ngập tràn yêu thương! 💖";
+      document.getElementById("msg").style.display = "block";
+      document.getElementById("wishBtn").style.display = "none";
     }
   </script>
 </body>
